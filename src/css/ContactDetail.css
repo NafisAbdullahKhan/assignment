@@ -1,0 +1,32 @@
+.contact-detail {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  .contact-detail h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .contact-detail p {
+    margin: 10px 0;
+  }
+  
+  .contact-detail button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .contact-detail button:hover {
+    background-color: #45a049;
+  }  
