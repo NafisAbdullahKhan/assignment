@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import config from '../config.json';
 
-const ContactForm = ({ setContacts, contacts }) => {
+const ContactForm = ({ setContacts, contacts, currentContact, setCurrentContact }) => {
     const [form, setForm] = useState({ name: '', email: '', contact: '' });
     const [errors, setErrors] = useState({});
-    const [currentContact, setCurrentContact] = useState(null);
 
     useEffect(() => {
         if (currentContact) {

@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import ContactForm from './ContactForm';
 import config from '../config.json';
 import '../css/ContactManager.css';
 
 const ContactManager = () => {
     const [contacts, setContacts] = useState([]);
-    const navigate = useNavigate();
+    const [currentContact, setCurrentContact] = useState(null);
 
     useEffect(() => {
         fetch(`${config.baseURL}/users`)
@@ -24,9 +23,18 @@ const ContactManager = () => {
             .catch(error => console.error('Error deleting contact:', error));
     };
 
+    const handleUpdate = (contact) => {
+        setCurrentContact(contact);
+    };
+
     return (
         <div className="contact-manager">
-            <ContactForm setContacts={setContacts} contacts={contacts} />
+            <ContactForm
+                setContacts={setContacts}
+                contacts={contacts}
+                currentContact={currentContact}
+                setCurrentContact={setCurrentContact}
+            />
             <table className="contact-table">
                 <thead>
                     <tr>
@@ -45,8 +53,7 @@ const ContactManager = () => {
                             <td><a href={`mailto:${contact.email}`}>{contact.email}</a></td>
                             <td>{contact.contact}</td>
                             <td>
-                                <button onClick={() => navigate(`/contact-detail/${contact.id}`)}>View</button>
-                                <button onClick={() => navigate(`/contact-detail/${contact.id}`)}>Update</button>
+                                <button onClick={() => handleUpdate(contact)}>Update</button>
                                 <button onClick={() => handleDelete(contact.id)}>Delete</button>
                             </td>
                         </tr>
